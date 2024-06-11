@@ -1,0 +1,10 @@
+.container{
+	width:75vw;
+	height:500px;
+	margin:auto;
+	background-color: lightpink;	
+}
+.container img{
+	width:300px;
+	height:300px;
+}
