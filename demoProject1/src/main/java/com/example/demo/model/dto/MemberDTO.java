@@ -20,7 +20,7 @@ public class MemberDTO {
 	private String memberId;
 	private String memberPw;
 	private String memberName;
-	private String memberAge;
+	private int memberAge;
 	
 	// Getter -> lombok @Getter 자동완성 사용하기
 	// Setter -> lombok @Setter 자동완성 사용하기
