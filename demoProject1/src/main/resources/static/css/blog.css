@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+.posts {
+  flex: 2;
+  margin-right: 20px;
+}
+.posts .article {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #f2f2f2;
+}
+.posts .article h2 {
+  margin-top: 0px;
+}
+.posts .article a {
+  color: #333;
+  text-decoration: none;
+}
+.aside {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #f2f2f2;
+}
+.visitor-comments {
+  /*
+  flex
+  1 : 다른 태그와 동일하게 남은 공간을 공평하게 나눠 가지는 것
+  1 : 다른 태그와 동일하게 줄어들어야 한다면 공평하게 같이 나눠서 줄어드는 것
+  100% : 태그의 기본 크기 설정, 기본 크기 100%
+  */
+  flex: 1 1 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #f2f2f2;
+  margin-top: 20px;
+}
+.visitor-comments h2 {
+  margin-top: 0;
+}
+.visitor-comments form {
+  display: flex;
+  flex-direction: column;
+}
+.visitor-comments label {
+  margin: 10px 0 5px;
+}
+.visitor-comments input,
+.visitor-comments textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.visitor-comments button {
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 10px;
+}
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #333;
+  color: white;
+}
