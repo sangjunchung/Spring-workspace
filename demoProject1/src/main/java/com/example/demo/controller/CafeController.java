@@ -4,7 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.model.dto.CafeDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +18,7 @@ public class CafeController {
 	public String cafeMainMethod() {
 		return "/cafe/cafe-index";
 	}
-	
+	/*
 	@PostMapping("comment")
 	public String cafeMainComment(
 			@RequestParam("cafeCommentName") String cafeCommentName,
@@ -27,6 +28,19 @@ public class CafeController {
 		
 		log.debug("cafeCommentName : "+cafeCommentName);
 		log.debug("cafeCommentOpinion : "+cafeCommentOpinion);
+		
+		return "redirect:/cafe/index";
+	}
+	*/
+	
+	// CafeDTO cafe-board
+	@PostMapping("comment")
+	public String cafeIndexComment(CafeDTO inComment) {
+		CafeDTO incafe = new CafeDTO();
+		incafe.setCafeCommentName(inComment.getCafeCommentName());
+		incafe.setCafeCommentOpinion(inComment.getCafeCommentOpinion());
+		
+		log.info(incafe.toString());
 		
 		return "redirect:/cafe/index";
 	}
