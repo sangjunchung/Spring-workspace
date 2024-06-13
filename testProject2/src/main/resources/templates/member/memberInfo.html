@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>멤버 정보</title>
+</head>
+<body>
+	<h1>멤버 정보 보기</h1>
+	<h3>DTO 객체 출력</h3>
+	 <h4>방법 1번</h4>
+	 <ul>
+	 	<li th:text="${mem[0]}">mem 객체</li>
+	 	<li th:text="${mem[0].name}">이름</li>
+	 	<li th:text="${mem[0].phone}">전화번호</li>
+	 	<li th:text="${mem[0].age}">나이</li>
+	 </ul>
+	 
+	 <h4>방법 2번</h4>
+	 <ul th:object="${mem[1]}">
+	  	<li th:text="*{name}">이름</li>
+	  	<li th:text="*{phone}">전화번호</li>
+	  	<li th:text="*{age}">나이</li>
+	  </ul>
+	  
+	  <h4>방법 3번</h4>
+	  <table border="1">
+	  	<thead>
+	  		<tr>
+	  			<th>이름</th>
+	  			<th>전화번호</th>
+	  			<th>나이</th>
+	  		</tr>
+	  	</thead>
+	  	
+	  	<tbody>
+	  		<!-- Controller 에서 가져온 memList 를 모두 가져온 모음집 -->
+	  		<!-- memList에서 하나씩 꺼내서 member 변수에 하나씩 값을 담아줌 -->
+	  		<tr th:each="member : ${memList}" th:object="${member}">
+	  			<td th:text="*{name}">이름</td>
+	  			<td th:text="*{phone}">전화번호</td>
+	  			<td th:text="*{age}">나이</td>
+	  		</tr>
+	  	</tbody>
+	  </table>
+</body>
+</html>
