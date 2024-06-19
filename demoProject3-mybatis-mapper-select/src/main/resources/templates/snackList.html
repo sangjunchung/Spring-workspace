@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>snackList</title>
+</head>
+<body>
+	<h1>과자리스트</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>과자명</th>
+				<th>가격</th>
+				<th>회사번호</th>
+				<th>회사이름</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="s : ${snackList}" th:object="${s}">
+				<td th:text="*{snack_id}"></td>
+				<td th:text="*{snack_name}"></td>
+				<td th:text="*{price}"></td>
+				<td th:text="*{company_id}"></td>
+				<td th:text="*{company_name}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/">메인으로 돌아가기</a>
+</body>
+</html>

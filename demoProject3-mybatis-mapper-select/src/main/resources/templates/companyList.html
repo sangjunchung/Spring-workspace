@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>CompanyList</title>
+</head>
+<body>
+	<h1>회사리스트</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>회사명</th>
+				<th>회사주소</th>
+				<th>회사번호</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c : ${comList}" th:object="${c}">
+				<td th:text="*{company_id}"></td>
+				<td th:text="*{company_name}"></td>
+				<td th:text="*{company_address}"></td>
+				<td th:text="*{company_phone}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/">메인으로 돌아가기</a>
+</body>
+</html>
