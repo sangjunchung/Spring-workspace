@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.khmall.mapper.SCMapper">
+	<!-- 제품과 회사명 모두 보는 join select 문 -->
+	<select id="getAllSC" resultType="com.khmall.dto.SC">
+		SELECT * FROM SNACKS
+		JOIN COM USING (COMPANY_ID) 
+	</select>
+	
+	<!-- 제품 상세페이지에 보여줄 select 문 
+		 where 문을 사용해서 특정 변수 값을 가지고 올 때
+		 변수 값이 String 인지 int 인지 float 등 
+		 어떤 타입인지를 지정하고 알려줘야함
+		 사용자한테 값을 전달받아 db에서 확인하거나 db에 저장할 때는
+		 parameterType 을 사용
+		 
+		 resultMap을 사용하게 되면 parameterType를 사용하지 않아도됨
+		 왜냐하면 DTO와 DB가 각각 어떤 타입을 가지고 변수명을 사용하는지
+		 서로 매칭시켜놓은 공간이 있기 때문
+	-->
+	<select id="getSnackById" parameterType="int" resultType="com.khmall.dto.SC">
+		SELECT * FROM SNACKS
+		JOIN COM USING (COMPANY_ID)
+		WHERE SNACK_ID = #{snack_id} 
+		<!-- 소비자가 원하는 제품 상세페이지를 클릭하면
+			 해당하는 제품의 아이디 값을 가져와서 
+			 아이디 값과 일치하는 데이터를 모두 출력 -->
+	</select>
+	
+	<select id="getCompanyById" parameterType="int" resultType="com.khmall.dto.SC">
+		SELECT * FROM COM 
+		WHERE COMPANY_ID = #{company_id}
+	</select>
+</mapper>

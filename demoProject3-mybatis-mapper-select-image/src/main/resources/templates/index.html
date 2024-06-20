@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>pig 전체 보기</title>
+<link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+	<h1>Pig 전체 보기</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>pig 번호</th>
+				<th>pig 이름</th>
+				<th>pig 나이</th>
+				<th class="imageBox">pig 이미지</th>
+				<th>pig 상세보기</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p : ${pigs}" th:object="${p}">
+				<td th:text="*{pig_id}"></td>
+				<td th:text="*{pig_name}"></td>
+				<td th:text="*{pig_age}"></td>
+				<td><img th:src="@{*{pig_image_path}}"></td>
+				<td><a th:href="@{'/pig/'+*{pig_id}}">이동하기</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
