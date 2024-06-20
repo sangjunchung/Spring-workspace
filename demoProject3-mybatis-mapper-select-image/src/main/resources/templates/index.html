@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>pig 전체 보기</title>
-<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 	<h1>Pig 전체 보기</h1>
@@ -23,7 +23,7 @@
 				<td th:text="*{pig_name}"></td>
 				<td th:text="*{pig_age}"></td>
 				<td><img th:src="@{*{pig_image_path}}"></td>
-				<td><a th:href="@{'/pig/'+*{pig_id}}">이동하기</a></td>
+				<td><a th:href="@{'/pigDetail/'+*{pig_id}}">이동하기</a></td>
 			</tr>
 		</tbody>
 	</table>
