@@ -11,4 +11,6 @@ public interface PigMapper {
 	List<Pig> getAllPigs();
 	
 	Pig getPigById(int pig_id);
+	
+	void uploadPig(Pig pig);
 }

@@ -7,12 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khmall.dto.Pig;
 import com.khmall.service.PigService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class PigController {
 	@Autowired
 	private PigService pigService;
@@ -39,4 +44,30 @@ public class PigController {
 	public String getError() {
 		return "error";
 	}*/
+	
+	/* 돼지 정보를 올릴 수 있는 주소로 이동하는 GetMapping 작성하기 */
+	@GetMapping("/imgUpload") // html 파일과 java 파일이 만나는 공간
+	public String uploadForm(Model model) {
+		model.addAttribute("p", new Pig()); // DB에 올릴 수 있는 공간을 만들어줌
+		return "imgUpload";
+	}
+	
+	/* 돼지 정보 DB에 업로드 PostMapping */
+	@PostMapping("/upload")
+	public String uploadPig(Model model, 
+			@RequestParam("pig_name") String pig_name,
+			@RequestParam("pig_age") int pig_age,
+			@RequestParam("pig_image_path") MultipartFile file) { // @RequestParam
+		pigService.uploadPig(pig_name,pig_age,file);
+		log.info("pigUpload 확인 ");
+		
+		return "redirect:/";
+		// redirect:/ 와 index 만 적었을 때 차이점
+		/*
+			redirect:/ -> 사용자가 새로운 url로 다시 요청하도록 지시
+				-> react로 작성하고 나서 값을 전달할 때 주로 사용
+				
+			index -> html 파일 이름을 의미
+		*/
+	}
 }
