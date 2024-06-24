@@ -33,9 +33,18 @@ public class MemberController {
 			@RequestParam("member_name") String member_name,
 			@RequestParam("member_phone") String member_phone,
 			HttpSession session) {
-		return "redirect:/";
+		
+		Member member = memberService.getLogin(member_name, member_phone);
+		
+		if(member != null) {
+			session.setAttribute("loginSession", member);
+			return "redirect:/";
+		} else {
+			model.addAttribute("error", "일치하는 아이디 비밀번호가 없습니다.");
+			model.addAttribute("m", new Member());
+			return "login";
+		}
 	}
-	
 	/*
 		HttpSession session
 		사용자와 서버 간의 상태를 유지하는데 사용되는 객체
@@ -45,4 +54,10 @@ public class MemberController {
 		일정한 기간동안 데이터를 저장하고
 		일정 시간이 지나면 수명이 다하도록 수명을 관리할 수 있음(로그인 시간 유지)
 	*/
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); // invalidate 무효시키다. 없던일로만들다.
+		return "redirect:/";
+	}
 }
