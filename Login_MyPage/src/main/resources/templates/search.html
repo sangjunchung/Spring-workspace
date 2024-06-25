@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아이러브아카데미 - 내친구찾기</title>
+</head>
+<body>
+	<h1>아이러브아카데미 - 내친구찾기</h1>
+	<form th:action="@{/search}" method="post">
+		<input type="text" name="keyword" placeholder="이름 또는 전화번호 입력" required>
+		<button>검색하기</button>
+	</form>
+	<div th:if="${results}">
+		<h2>검색결과</h2>
+		<ul>
+			<li th:each="member : ${results}" th:object="${member}">
+				<p>이름 : <span th:text="*{member_name}"></span></p>
+				<p>나이 : <span th:text="*{member_age}"></span></p>
+				<p>번호 : <span th:text="*{member_phone}"></span></p>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

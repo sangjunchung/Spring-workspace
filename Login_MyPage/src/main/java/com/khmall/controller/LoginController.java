@@ -1,5 +1,7 @@
 package com.khmall.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -98,5 +100,20 @@ public class LoginController {
 		session.invalidate();
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("/search")
+	public String showSearch() {
+		return "search";
+	}
+	
+	@PostMapping("/search")
+	public String searchMembers(Model model,
+			@RequestParam("keyword") String keyword) {
+		
+		List<Member> memList = loginService.searchMembers(keyword);
+		model.addAttribute("results", memList);
+		
+		return "search";
 	}
 }

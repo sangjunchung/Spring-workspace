@@ -1,5 +1,7 @@
 package com.khmall.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,4 +20,5 @@ public interface LoginMapper {
 	Member getLogin(@Param("member_name") String member_name, @Param("member_phone") String member_phone);
 	void updateMember(Member member);
 	void deleteMember(@Param("member_id") int member_id);
+	List<Member> searchMembers(@Param("keyword") String keyword);
 }
