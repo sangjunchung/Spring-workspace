@@ -107,6 +107,10 @@ public class LoginController {
 		return "search";
 	}
 	
+	/*
+		@RequestParam("input이나 태그에 작성한 name 또는 th로 작성된 변수명")
+	*/
+	
 	@PostMapping("/search")
 	public String searchMembers(Model model,
 			@RequestParam("keyword") String keyword) {
