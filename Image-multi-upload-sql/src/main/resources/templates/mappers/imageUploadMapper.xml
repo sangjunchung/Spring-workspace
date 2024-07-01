@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.khmall.mapper.ImageUploadMapper">
+	<insert id="insertImageUpload" parameterType="java.util.Map">
+		INSERT INTO IMAGE_UPLOAD(ID, FILE_NAME, UPLOAD_DIR)
+		VALUES (image_upload_seq.NEXTVAL, #{file_name}, #{upload_dir})
+	</insert>
+</mapper>
