@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상품 이름 중복 검사</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#checkDupBtn').click(function(){
+			let inputName = $('#inputName').val();
+			
+			$.ajax({
+				url: '/checkName',
+				type: 'get',
+				data: {inputName : inputName},
+				success: function(res){
+					if(res.isCheck){
+						$('#guideMsg').text('등록 가능!');
+					} else {
+						$('#guideMsg').text('중복!');
+					}
+				},
+				error: function(){
+					$('#guideMsg').text('에러 발생!');
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<h1>상품 이름의 중복 체크</h1>
+	<label for="inputName">상품명</label>
+	<input type="text" id="inputName" name="inputName"/>
+	<button type="button" id="checkDupBtn">중복 확인</button>
+	<p id="guideMsg"></p>
+</body>
+</html>
