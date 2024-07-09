@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax를 활용한 중복체크</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#checkDup').click(function(){
+			let checkName = $('#itemName').val();
+			
+			$.ajax({
+				url:'/itemCheck',
+				type: 'get',
+				data: {controllerItemName : checkName},
+				success: function(res) {
+					if(res.isCheck){
+						$('#guideMsg').text('중복! 등록 불가');
+					} else {
+						$('#guideMsg').text('등록 가능!');
+					}
+				},
+				error: function(){
+					$('#guideMsg').text('오류 발생!');
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<h1>Ajax 활용한 상품명 중복확인</h1>
+	<label>상품명</label>
+	<input type="text" id="itemName" name="itemName" />
+	<button id="checkDup">중복확인 버튼</button>
+	<p id="guideMsg"></p>
+</body>
+</html>
